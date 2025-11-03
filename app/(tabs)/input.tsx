@@ -1,12 +1,7 @@
 import { ThemedText } from "@/components/themed-text";
-import {
-  StyleSheet,
-  KeyboardAvoidingView,
-  View,
-  Platform,
-  Button,
-} from "react-native";
+import { StyleSheet, KeyboardAvoidingView, View, Platform } from "react-native";
 import { ThemedInput } from "@/components/themed-input";
+import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { format } from "date-fns";
 
@@ -27,10 +22,10 @@ export default function InputScreen() {
           <ThemedText style={styles.date} type="default">
             {getTodaysDate()}
           </ThemedText>
-          <Button
-            title="Change date"
-            onPress={() => console.log("Simple Button pressed")}
-          />
+
+          <Link href="./modal">
+            <ThemedText type="default">Change date</ThemedText>
+          </Link>
         </View>
         <View style={styles.inputRow}>
           <ThemedText type="default">£</ThemedText>
