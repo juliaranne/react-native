@@ -22,7 +22,6 @@ export default function InputScreen() {
           <ThemedText style={styles.date} type="default">
             {getTodaysDate()}
           </ThemedText>
-
           <Link href="./modal">
             <ThemedText type="default">Change date</ThemedText>
           </Link>

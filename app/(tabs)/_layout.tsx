@@ -19,12 +19,18 @@ export default function TabLayout() {
       }}
     >
       <Tabs.Screen
-        name="input"
+        name="index"
         options={{
           title: "Spend",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="house.fill" color={color} />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="modal"
+        options={{
+          href: null,
         }}
       />
     </Tabs>
