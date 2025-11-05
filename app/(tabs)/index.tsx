@@ -16,6 +16,9 @@ const getTodaysDate = () => {
 export default function InputScreen() {
   return (
     <SafeAreaView style={styles.container}>
+      <ThemedText style={styles.title} type="title">
+        Budget Tracker
+      </ThemedText>
       <View style={styles.categories}>
         {Object.entries(Categories).map(([key, value]) => {
           return (
@@ -84,5 +87,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
+  },
+  title: {
+    marginBottom: 20,
   },
 });
