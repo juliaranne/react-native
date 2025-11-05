@@ -4,6 +4,7 @@ import { ThemedInput } from "@/components/themed-input";
 import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { format } from "date-fns";
+import { CategoryIcon } from "@/components/category-icon";
 
 const getTodaysDate = () => {
   const today = format(new Date(), "do MMM");
@@ -14,6 +15,13 @@ const getTodaysDate = () => {
 export default function InputScreen() {
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.categories}>
+        <CategoryIcon
+          text="Entertainment"
+          color="white"
+          name="paperplane.fill"
+        ></CategoryIcon>
+      </View>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardContainer}
@@ -65,5 +73,9 @@ const styles = StyleSheet.create({
   dateRow: {
     alignItems: "center",
     marginBottom: 30,
+  },
+  categories: {
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
 });
