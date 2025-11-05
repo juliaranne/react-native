@@ -26,10 +26,14 @@ export function CategoryIcon({
       style={({ pressed }) => [styles.button, style, pressed && styles.pressed]}
     >
       <IconSymbol
-        name="paperplane.fill"
-        color={otherProps.color}
-        style={styles.icon}
-        size={30}
+        name={otherProps.name}
+        color="white"
+        style={{
+          ...styles.icon,
+          backgroundColor: otherProps.color,
+          outlineColor: otherProps.color,
+        }}
+        size={40}
       ></IconSymbol>
       <ThemedText style={styles.text}>{otherProps.text}</ThemedText>
     </Pressable>
@@ -41,19 +45,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 10,
+    width: "25%",
+    marginBottom: 10,
   },
   pressed: {
     opacity: 0.6,
   },
   icon: {
     borderRadius: 20,
-    backgroundColor: "red",
-    outline: "red",
-    outlineWidth: 18,
-    outlineColor: "red",
-    marginBottom: 25,
+    outlineWidth: 12,
+    marginBottom: 18,
   },
   text: {
-    fontSize: 16,
+    fontSize: 14,
   },
 });

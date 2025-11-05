@@ -5,6 +5,7 @@ import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { format } from "date-fns";
 import { CategoryIcon } from "@/components/category-icon";
+import { Categories } from "@/constants/theme";
 
 const getTodaysDate = () => {
   const today = format(new Date(), "do MMM");
@@ -16,11 +17,16 @@ export default function InputScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.categories}>
-        <CategoryIcon
-          text="Entertainment"
-          color="white"
-          name="paperplane.fill"
-        ></CategoryIcon>
+        {Object.entries(Categories).map(([key, value]) => {
+          return (
+            <CategoryIcon
+              text={value.display_name}
+              color={value.color}
+              name={value.icon}
+              key={key}
+            ></CategoryIcon>
+          );
+        })}
       </View>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -77,5 +83,6 @@ const styles = StyleSheet.create({
   categories: {
     flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "space-between",
   },
 });

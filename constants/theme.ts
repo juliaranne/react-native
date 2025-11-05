@@ -54,3 +54,66 @@ export const Fonts = Platform.select({
     mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
 });
+
+export const Categories = {
+  entertainment: {
+    color: "red",
+    icon: "theatermasks.fill",
+    display_name: "Going out",
+  },
+  eating_out: {
+    color: "green",
+    icon: "fork.knife",
+    display_name: "Eating out",
+  },
+  food_shopping: {
+    color: "blue",
+    icon: "basket.fill",
+    display_name: "Groceries",
+  },
+  fashion: {
+    color: "coral",
+    icon: "tshirt.fill",
+    display_name: "Fashion",
+  },
+  diy: {
+    color: "darkcyan",
+    icon: "hammer.fill",
+    display_name: "DIY",
+  },
+  Fitness: {
+    color: "crimson",
+    icon: "figure.run",
+    display_name: "Fitness",
+  },
+  holidays: {
+    color: "deepskyblue",
+    icon: "beach.umbrella",
+    display_name: "Holidays",
+  },
+  transport: {
+    color: "purple",
+    icon: "car.fill",
+    display_name: "Transport",
+  },
+  pets: {
+    color: "brown",
+    icon: "pawprint.fill",
+    display_name: "Pets",
+  },
+  beauty: {
+    color: "lightpink",
+    icon: "eyebrow",
+    display_name: "Beauty",
+  },
+  gifts: {
+    color: "yellowgreen",
+    icon: "gift.fill",
+    display_name: "Gifts",
+  },
+  health: {
+    color: "gold",
+    icon: "heart.fill",
+    display_name: "Health",
+  },
+};
