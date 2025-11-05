@@ -3,9 +3,11 @@ import {
   type TextInputProps,
   StyleProp,
   TextStyle,
+  TextInputChangeEvent,
 } from "react-native";
 
 import { useThemeColor } from "@/hooks/use-theme-color";
+import { ChangeEvent, ChangeEventHandler } from "react";
 
 export type InputProps = TextInputProps & {
   lightColor?: string;
@@ -27,8 +29,14 @@ export function ThemedInput({
   );
   const color = useThemeColor({ light: darkColor, dark: lightColor }, "text");
 
+  const handleChange = (value: string) => {
+    console.log(value);
+    return value;
+  };
+
   return (
     <TextInput
+      onChangeText={handleChange}
       style={[
         { color, borderColor, borderWidth: 1, borderRadius: 6, padding: 8 },
         style,
