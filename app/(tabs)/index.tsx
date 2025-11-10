@@ -1,5 +1,11 @@
 import { ThemedText } from "@/components/themed-text";
-import { StyleSheet, KeyboardAvoidingView, View, Platform } from "react-native";
+import {
+  StyleSheet,
+  KeyboardAvoidingView,
+  View,
+  Platform,
+  Pressable,
+} from "react-native";
 import { ThemedInput } from "@/components/themed-input";
 import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -11,6 +17,10 @@ const getTodaysDate = () => {
   const today = format(new Date(), "do MMM");
   console.log(today);
   return today;
+};
+
+const handlePress = () => {
+  console.log("press");
 };
 
 export default function InputScreen() {
@@ -50,6 +60,9 @@ export default function InputScreen() {
             placeholder="I have spent"
             style={styles.input}
           ></ThemedInput>
+          <Pressable onPress={handlePress} style={styles.submitBtn}>
+            <ThemedText type="default">Track New Payment</ThemedText>
+          </Pressable>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -59,6 +72,7 @@ export default function InputScreen() {
 const styles = StyleSheet.create({
   input: {
     marginLeft: 8,
+    marginBottom: 30,
     flexGrow: 1,
     padding: 10,
     fontSize: 20,
@@ -66,6 +80,16 @@ const styles = StyleSheet.create({
   inputRow: {
     flexDirection: "row",
     alignItems: "center",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  submitBtn: {
+    width: "100%",
+    backgroundColor: "lightblue",
+    display: "flex",
+    alignItems: "center",
+    borderRadius: 6,
+    padding: 15,
   },
   container: {
     flex: 1,
