@@ -36,7 +36,7 @@ export function ThemedInput({
     <TextInput
       onChangeText={handleChange}
       style={[
-        { color, borderColor, borderWidth: 1, borderRadius: 6, padding: 8 },
+        { color, borderColor, borderWidth: 1, borderRadius: 6, padding: 15 },
         style,
       ]}
       {...otherProps}

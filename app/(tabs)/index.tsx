@@ -1,3 +1,4 @@
+import { useReducer } from "react";
 import { ThemedText } from "@/components/themed-text";
 import {
   StyleSheet,
@@ -23,7 +24,19 @@ const handlePress = () => {
   console.log("press");
 };
 
+// date
+// price
+// category
+const initialState = {
+  date: new Date(),
+  price: 0,
+  category: "",
+};
+
+const reducer = (state, action) => {};
+
 export default function InputScreen() {
+  const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <SafeAreaView style={styles.container}>
       <ThemedText style={styles.title} type="title">
