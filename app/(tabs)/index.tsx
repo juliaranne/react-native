@@ -16,18 +16,22 @@ import { Categories } from "@/constants/theme";
 
 enum ReducerActionKind {
   CATEGORY = "CATEGORY",
+  AMOUNT = "AMOUNT",
 }
 interface ReducerAction {
   type: ReducerActionKind;
-  category: string;
+  category?: string;
+  price?: string;
 }
 interface ReducerState {
-  category: string;
+  category: string | undefined;
+  price: string | undefined;
+  date: Date | undefined;
 }
 
 const initialState = {
   date: new Date(),
-  price: 0,
+  price: "",
   category: "",
 };
 
@@ -40,6 +44,15 @@ const reducer = (state: ReducerState, action: ReducerAction) => {
         category: action.category,
       };
     }
+
+    case ReducerActionKind.AMOUNT:
+      return {
+        ...state,
+        price: action.price,
+      };
+
+    default:
+      return state;
   }
 };
 
@@ -55,6 +68,13 @@ const handlePress = () => {
 
 export default function InputScreen() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const updateValue = (value: string) =>
+    dispatch({
+      type: ReducerActionKind.AMOUNT,
+      price: value,
+    });
+
   return (
     <SafeAreaView style={styles.container}>
       <ThemedText style={styles.title} type="title">
@@ -95,6 +115,7 @@ export default function InputScreen() {
             keyboardType="numeric"
             placeholder="I have spent"
             style={styles.input}
+            changeEvent={updateValue}
           ></ThemedInput>
           <Pressable onPress={handlePress} style={styles.submitBtn}>
             <ThemedText type="default">Track New Payment</ThemedText>

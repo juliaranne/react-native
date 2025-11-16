@@ -11,7 +11,7 @@ export type PressableProps = {
   color: string;
   name: string;
   text: string;
-  selected: string;
+  selected: string | undefined;
   category: string;
   handleChange: () => void;
 };

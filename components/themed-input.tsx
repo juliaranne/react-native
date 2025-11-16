@@ -13,12 +13,14 @@ export type InputProps = TextInputProps & {
   style?: StyleProp<TextStyle>;
   keyboardType?: "default" | "numeric";
   placeholder?: string;
+  changeEvent: (value: string) => void;
 };
 
 export function ThemedInput({
   style,
   lightColor,
   darkColor,
+  changeEvent,
   ...otherProps
 }: InputProps) {
   const borderColor = useThemeColor(
@@ -28,8 +30,8 @@ export function ThemedInput({
   const color = useThemeColor({ light: darkColor, dark: lightColor }, "text");
 
   const handleChange = (value: string) => {
-    console.log(value);
-    return value;
+    console.log("change");
+    changeEvent(value);
   };
 
   return (
