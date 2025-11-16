@@ -68,6 +68,8 @@ export default function InputScreen() {
               color={value.color}
               name={value.icon}
               key={key}
+              selected={state.category}
+              category={key}
               handleChange={() =>
                 dispatch({ type: ReducerActionKind.CATEGORY, category: key })
               }

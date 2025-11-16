@@ -11,6 +11,8 @@ export type PressableProps = {
   color: string;
   name: string;
   text: string;
+  selected: string;
+  category: string;
   handleChange: () => void;
 };
 
@@ -19,17 +21,25 @@ export function CategoryIcon({
   lightColor,
   darkColor,
   handleChange,
+  selected,
+  name,
+  category,
   ...otherProps
 }: PressableProps) {
   // const color = useThemeColor({ light: darkColor, dark: lightColor }, "text");
 
   return (
     <Pressable
-      style={({ pressed }) => [styles.button, style, pressed && styles.pressed]}
+      style={({ pressed }) => [
+        styles.button,
+        style,
+        pressed && styles.pressed,
+        selected === category ? styles.selected : "",
+      ]}
       onPress={handleChange}
     >
       <IconSymbol
-        name={otherProps.name}
+        name={name}
         color="white"
         style={{
           ...styles.icon,
@@ -53,6 +63,9 @@ const styles = StyleSheet.create({
   },
   pressed: {
     opacity: 0.6,
+  },
+  selected: {
+    backgroundColor: "red",
   },
   icon: {
     borderRadius: 20,
