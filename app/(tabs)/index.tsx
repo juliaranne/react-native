@@ -14,6 +14,35 @@ import { format } from "date-fns";
 import { CategoryIcon } from "@/components/category-icon";
 import { Categories } from "@/constants/theme";
 
+enum ReducerActionKind {
+  CATEGORY = "CATEGORY",
+}
+interface ReducerAction {
+  type: ReducerActionKind;
+  category: string;
+}
+interface ReducerState {
+  category: string;
+}
+
+const initialState = {
+  date: new Date(),
+  price: 0,
+  category: "",
+};
+
+const reducer = (state: ReducerState, action: ReducerAction) => {
+  console.log(state, action);
+  switch (action.type) {
+    case ReducerActionKind.CATEGORY: {
+      return {
+        ...state,
+        category: action.category,
+      };
+    }
+  }
+};
+
 const getTodaysDate = () => {
   const today = format(new Date(), "do MMM");
   console.log(today);
@@ -23,17 +52,6 @@ const getTodaysDate = () => {
 const handlePress = () => {
   console.log("press");
 };
-
-// date
-// price
-// category
-const initialState = {
-  date: new Date(),
-  price: 0,
-  category: "",
-};
-
-const reducer = (state, action) => {};
 
 export default function InputScreen() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -50,6 +68,9 @@ export default function InputScreen() {
               color={value.color}
               name={value.icon}
               key={key}
+              handleChange={() =>
+                dispatch({ type: ReducerActionKind.CATEGORY, category: key })
+              }
             ></CategoryIcon>
           );
         })}

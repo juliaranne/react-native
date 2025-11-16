@@ -11,12 +11,14 @@ export type PressableProps = {
   color: string;
   name: string;
   text: string;
+  handleChange: () => void;
 };
 
 export function CategoryIcon({
   style,
   lightColor,
   darkColor,
+  handleChange,
   ...otherProps
 }: PressableProps) {
   // const color = useThemeColor({ light: darkColor, dark: lightColor }, "text");
@@ -24,6 +26,7 @@ export function CategoryIcon({
   return (
     <Pressable
       style={({ pressed }) => [styles.button, style, pressed && styles.pressed]}
+      onPress={handleChange}
     >
       <IconSymbol
         name={otherProps.name}
