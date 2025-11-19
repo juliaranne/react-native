@@ -125,15 +125,25 @@ export default function InputScreen() {
           </Link>
         </View>
         <View style={styles.inputRow}>
-          <ThemedText type="default">£</ThemedText>
+          <ThemedText style={styles.inputLabel} type="default">
+            £
+          </ThemedText>
           <ThemedInput
             keyboardType="numeric"
             placeholder="I have spent"
             style={styles.input}
             changeEvent={updateValue}
           ></ThemedInput>
-          <Pressable onPress={handlePress} style={styles.submitBtn}>
-            <ThemedText type="default">Track New Payment</ThemedText>
+          <Pressable
+            onPress={handlePress}
+            style={({ pressed }) => [
+              styles.submitBtn,
+              pressed && styles.pressed,
+            ]}
+          >
+            <ThemedText type="defaultSemiBold" lightColor="white">
+              Record payment
+            </ThemedText>
           </Pressable>
         </View>
       </KeyboardAvoidingView>
@@ -143,10 +153,10 @@ export default function InputScreen() {
 
 const styles = StyleSheet.create({
   input: {
-    marginLeft: 8,
     marginBottom: 30,
     flexGrow: 1,
-    padding: 10,
+    padding: 15,
+    paddingLeft: 35,
     fontSize: 20,
   },
   inputRow: {
@@ -154,14 +164,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexWrap: "wrap",
     justifyContent: "center",
+    position: "relative",
+    overflow: "visible",
+  },
+  inputLabel: {
+    position: "absolute",
+    left: 10,
+    top: 35,
+    fontSize: 26,
   },
   submitBtn: {
     width: "100%",
-    backgroundColor: "lightblue",
+    backgroundColor: "purple",
     display: "flex",
     alignItems: "center",
     borderRadius: 6,
     padding: 15,
+  },
+  pressed: {
+    opacity: 0.8,
   },
   container: {
     flex: 1,
@@ -172,12 +193,17 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   date: {
-    fontSize: 40,
+    fontSize: 30,
     lineHeight: 38,
+    marginBottom: 2,
   },
   dateRow: {
     alignItems: "center",
     marginBottom: 30,
+    backgroundColor: "white",
+    opacity: 0.8,
+    borderRadius: 6,
+    padding: 15,
   },
   categories: {
     flexDirection: "row",
@@ -185,6 +211,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   title: {
-    marginBottom: 20,
+    marginBottom: 30,
+    marginTop: 10,
   },
 });
