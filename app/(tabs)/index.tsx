@@ -58,7 +58,6 @@ const reducer = (state: ReducerState, action: ReducerAction) => {
 
 const getTodaysDate = () => {
   const today = format(new Date(), "do MMM");
-  console.log(today);
   return today;
 };
 
