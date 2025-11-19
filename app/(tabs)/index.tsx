@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { ThemedText } from "@/components/themed-text";
 import {
   StyleSheet,
@@ -13,15 +13,18 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { format } from "date-fns";
 import { CategoryIcon } from "@/components/category-icon";
 import { Categories } from "@/constants/theme";
+import { useDateStore } from "@/store/dateStore";
 
 enum ReducerActionKind {
   CATEGORY = "CATEGORY",
   AMOUNT = "AMOUNT",
+  DATE = "DATE",
 }
 interface ReducerAction {
   type: ReducerActionKind;
   category?: string;
   price?: string;
+  date?: Date;
 }
 interface ReducerState {
   category: string | undefined;
@@ -36,7 +39,6 @@ const initialState = {
 };
 
 const reducer = (state: ReducerState, action: ReducerAction) => {
-  console.log(state, action);
   switch (action.type) {
     case ReducerActionKind.CATEGORY: {
       return {
@@ -49,6 +51,12 @@ const reducer = (state: ReducerState, action: ReducerAction) => {
       return {
         ...state,
         price: action.price,
+      };
+
+    case ReducerActionKind.DATE:
+      return {
+        ...state,
+        date: action.date,
       };
 
     default:
@@ -67,6 +75,14 @@ const handlePress = () => {
 
 export default function InputScreen() {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const selectedDate = useDateStore((s) => s.selectedDate);
+
+  useEffect(() => {
+    dispatch({
+      type: ReducerActionKind.DATE,
+      date: selectedDate,
+    });
+  }, [selectedDate]);
 
   const updateValue = (value: string) =>
     dispatch({
@@ -102,7 +118,7 @@ export default function InputScreen() {
       >
         <View style={styles.dateRow}>
           <ThemedText style={styles.date} type="default">
-            {getTodaysDate()}
+            {selectedDate?.toDateString() || getTodaysDate()}
           </ThemedText>
           <Link href="./modal">
             <ThemedText type="default">Change date</ThemedText>

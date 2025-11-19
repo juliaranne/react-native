@@ -7,10 +7,15 @@ import { ThemedView } from "@/components/themed-view";
 import DateTimePicker, {
   DateTimePickerEvent,
 } from "@react-native-community/datetimepicker";
+import { useDateStore } from "@/store/dateStore";
 
 export default function ModalScreen() {
+  const setSelectedDate = useDateStore((s) => s.setSelectedDate);
+
   const handleDateChange = (event: DateTimePickerEvent, date?: Date) => {
-    console.log(event.type, date);
+    if (event.type === "set" && date) {
+      setSelectedDate(date);
+    }
   };
 
   return (
@@ -22,7 +27,7 @@ export default function ModalScreen() {
         onChange={(event, date) => handleDateChange(event, date)}
       />
       <Link href="/" style={styles.link}>
-        <ThemedText type="link">Go to home screen</ThemedText>
+        <ThemedText type="link">Done</ThemedText>
       </Link>
     </ThemedView>
   );
@@ -38,5 +43,6 @@ const styles = StyleSheet.create({
   link: {
     marginTop: 15,
     paddingVertical: 15,
+    fontSize: 20,
   },
 });
