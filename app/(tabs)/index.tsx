@@ -25,16 +25,24 @@ interface ReducerAction {
   type: ReducerActionKind;
   category?: string;
   price?: string;
-  date?: Date;
+  date?: string;
 }
 interface ReducerState {
   category: string | undefined;
   price: string | undefined;
-  date: Date | undefined;
+  date: string | undefined;
 }
 
+const formatDate = (theDate: Date | undefined) => {
+  if (!theDate) {
+    return;
+  }
+  const formattedDate = format(theDate, "E do MMM");
+  return formattedDate;
+};
+
 const initialState = {
-  date: new Date(),
+  date: formatDate(new Date()),
   price: "",
   category: "",
 };
@@ -65,14 +73,6 @@ const reducer = (state: ReducerState, action: ReducerAction) => {
   }
 };
 
-const formatDate = (theDate: Date | undefined) => {
-  if (!theDate) {
-    return;
-  }
-  const formattedDate = format(theDate, "E do MMM");
-  return formattedDate;
-};
-
 const handlePress = () => {
   console.log("press");
 };
@@ -84,7 +84,7 @@ export default function InputScreen() {
   useEffect(() => {
     dispatch({
       type: ReducerActionKind.DATE,
-      date: selectedDate,
+      date: formatDate(selectedDate),
     });
   }, [selectedDate]);
 
@@ -124,7 +124,7 @@ export default function InputScreen() {
       >
         <View style={styles.dateRow}>
           <ThemedText style={styles.date} type="default">
-            {formatDate(selectedDate) || formatDate(new Date())}
+            {state.date}
           </ThemedText>
           <Link href="./modal">
             <ThemedText type="link">Change date</ThemedText>
