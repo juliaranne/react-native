@@ -148,7 +148,7 @@ export default function InputScreen() {
             ]}
           >
             <ThemedText type="defaultSemiBold" lightColor="white">
-              Record payment
+              Track spend
             </ThemedText>
           </Pressable>
         </View>

@@ -30,6 +30,7 @@ const MAPPING: IconMapping = {
   "gift.fill": "redeem",
   "heart.fill": "monitor-heart",
   "checkmark.circle": "check-circle",
+  "chart.bar.fill": "bar-chart",
 };
 
 /**
