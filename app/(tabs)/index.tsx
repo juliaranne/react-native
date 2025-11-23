@@ -6,6 +6,7 @@ import {
   View,
   Platform,
   Pressable,
+  ScrollView,
 } from "react-native";
 import { ThemedInput } from "@/components/themed-input";
 import { Link } from "expo-router";
@@ -95,23 +96,25 @@ export default function InputScreen() {
       <ThemedText style={styles.title} type="title">
         Budget Tracker
       </ThemedText>
-      <View style={styles.categories}>
-        {Object.entries(Categories).map(([key, value]) => {
-          return (
-            <CategoryIcon
-              text={value.display_name}
-              color={value.color}
-              name={value.icon}
-              key={key}
-              selected={state.category}
-              category={key}
-              handleChange={() =>
-                dispatch({ type: ReducerActionKind.CATEGORY, category: key })
-              }
-            ></CategoryIcon>
-          );
-        })}
-      </View>
+      <ScrollView style={styles.scroll}>
+        <View style={styles.categories}>
+          {Object.entries(Categories).map(([key, value]) => {
+            return (
+              <CategoryIcon
+                text={value.display_name}
+                color={value.color}
+                name={value.icon}
+                key={key}
+                selected={state.category}
+                category={key}
+                handleChange={() =>
+                  dispatch({ type: ReducerActionKind.CATEGORY, category: key })
+                }
+              ></CategoryIcon>
+            );
+          })}
+        </View>
+      </ScrollView>
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardContainer}
@@ -121,7 +124,7 @@ export default function InputScreen() {
             {selectedDate?.toDateString() || getTodaysDate()}
           </ThemedText>
           <Link href="./modal">
-            <ThemedText type="default">Change date</ThemedText>
+            <ThemedText type="link">Change date</ThemedText>
           </Link>
         </View>
         <View style={styles.inputRow}>
@@ -199,16 +202,18 @@ const styles = StyleSheet.create({
   },
   dateRow: {
     alignItems: "center",
-    marginBottom: 30,
     backgroundColor: "white",
     opacity: 0.8,
     borderRadius: 6,
     padding: 15,
   },
+  scroll: {
+    maxHeight: 350,
+    paddingTop: 5,
+  },
   categories: {
     flexDirection: "row",
     flexWrap: "wrap",
-    justifyContent: "space-between",
   },
   title: {
     marginBottom: 30,

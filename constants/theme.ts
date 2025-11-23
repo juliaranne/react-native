@@ -116,4 +116,44 @@ export const Categories = {
     icon: "heart.fill",
     display_name: "Health",
   },
+  other: {
+    color: "deepskyblue",
+    icon: "beach.umbrella",
+    display_name: "Other",
+  },
+  household: {
+    color: "purple",
+    icon: "car.fill",
+    display_name: "Household",
+  },
+  bills: {
+    color: "brown",
+    icon: "pawprint.fill",
+    display_name: "Bills",
+  },
+  charity: {
+    color: "lightpink",
+    icon: "eyebrow",
+    display_name: "Charity",
+  },
+  subscription: {
+    color: "yellowgreen",
+    icon: "gift.fill",
+    display_name: "Subscribe",
+  },
+  friend: {
+    color: "gold",
+    icon: "heart.fill",
+    display_name: "Pay friend",
+  },
+  gardening: {
+    color: "yellowgreen",
+    icon: "gift.fill",
+    display_name: "Garden",
+  },
+  work_lunch: {
+    color: "gold",
+    icon: "heart.fill",
+    display_name: "Work lunch",
+  },
 };

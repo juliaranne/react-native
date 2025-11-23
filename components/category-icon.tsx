@@ -1,4 +1,10 @@
-import { StyleProp, ViewStyle, Pressable, StyleSheet } from "react-native";
+import {
+  StyleProp,
+  ViewStyle,
+  Pressable,
+  StyleSheet,
+  View,
+} from "react-native";
 import { IconSymbol } from "./ui/icon-symbol";
 import { ThemedText } from "./themed-text";
 
@@ -30,14 +36,10 @@ export function CategoryIcon({
 
   return (
     <Pressable
-      style={({ pressed }) => [
-        styles.button,
-        style,
-        pressed && styles.pressed,
-        selected === category ? styles.selected : "",
-      ]}
+      style={({ pressed }) => [styles.button, style, pressed && styles.pressed]}
       onPress={handleChange}
     >
+      <View style={selected === category ? styles.selected : ""}></View>
       <IconSymbol
         name={name}
         color="white"
@@ -60,12 +62,20 @@ const styles = StyleSheet.create({
     padding: 10,
     width: "25%",
     marginBottom: 10,
+    position: "relative",
   },
   pressed: {
     opacity: 0.6,
   },
   selected: {
-    backgroundColor: "red",
+    backgroundColor: "green",
+    width: 25,
+    height: 25,
+    borderRadius: 20,
+    right: 5,
+    top: 0,
+    position: "absolute",
+    zIndex: 1,
   },
   icon: {
     borderRadius: 20,
