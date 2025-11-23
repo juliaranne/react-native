@@ -39,7 +39,13 @@ export function CategoryIcon({
       style={({ pressed }) => [styles.button, style, pressed && styles.pressed]}
       onPress={handleChange}
     >
-      <View style={selected === category ? styles.selected : ""}></View>
+      <View style={selected === category ? styles.selected : styles.checkIcon}>
+        <IconSymbol
+          name={"checkmark.circle"}
+          color="green"
+          size={28}
+        ></IconSymbol>
+      </View>
       <IconSymbol
         name={name}
         color="white"
@@ -68,14 +74,12 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   selected: {
-    backgroundColor: "green",
-    width: 25,
-    height: 25,
-    borderRadius: 20,
     right: 5,
     top: 0,
     position: "absolute",
     zIndex: 1,
+    backgroundColor: "lightgreen",
+    borderRadius: 26,
   },
   icon: {
     borderRadius: 20,
@@ -84,5 +88,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
+  },
+  checkIcon: {
+    display: "none",
   },
 });

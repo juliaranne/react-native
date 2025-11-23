@@ -29,6 +29,7 @@ const MAPPING: IconMapping = {
   eyebrow: "spa",
   "gift.fill": "redeem",
   "heart.fill": "monitor-heart",
+  "checkmark.circle": "check-circle",
 };
 
 /**
