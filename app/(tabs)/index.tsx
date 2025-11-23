@@ -65,9 +65,12 @@ const reducer = (state: ReducerState, action: ReducerAction) => {
   }
 };
 
-const getTodaysDate = () => {
-  const today = format(new Date(), "do MMM");
-  return today;
+const formatDate = (theDate: Date | undefined) => {
+  if (!theDate) {
+    return;
+  }
+  const formattedDate = format(theDate, "E do MMM");
+  return formattedDate;
 };
 
 const handlePress = () => {
@@ -121,7 +124,7 @@ export default function InputScreen() {
       >
         <View style={styles.dateRow}>
           <ThemedText style={styles.date} type="default">
-            {selectedDate?.toDateString() || getTodaysDate()}
+            {formatDate(selectedDate) || formatDate(new Date())}
           </ThemedText>
           <Link href="./modal">
             <ThemedText type="link">Change date</ThemedText>
