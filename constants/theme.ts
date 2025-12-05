@@ -81,7 +81,7 @@ export const Categories = {
     icon: "hammer.fill",
     display_name: "DIY",
   },
-  Fitness: {
+  fitness: {
     color: "crimson",
     icon: "figure.run",
     display_name: "Fitness",
@@ -118,42 +118,42 @@ export const Categories = {
   },
   other: {
     color: "deepskyblue",
-    icon: "beach.umbrella",
+    icon: "questionmark",
     display_name: "Other",
   },
   household: {
     color: "purple",
-    icon: "car.fill",
+    icon: "house.fill",
     display_name: "Household",
   },
   bills: {
     color: "brown",
-    icon: "pawprint.fill",
+    icon: "creditcard",
     display_name: "Bills",
   },
   charity: {
     color: "lightpink",
-    icon: "eyebrow",
+    icon: "cross.fill",
     display_name: "Charity",
   },
   subscription: {
     color: "yellowgreen",
-    icon: "gift.fill",
+    icon: "arrow.trianglehead.clockwise",
     display_name: "Subscribe",
   },
   friend: {
     color: "gold",
-    icon: "heart.fill",
+    icon: "person.2.fill",
     display_name: "Pay friend",
   },
   gardening: {
     color: "yellowgreen",
-    icon: "gift.fill",
+    icon: "tree",
     display_name: "Garden",
   },
   work_lunch: {
     color: "gold",
-    icon: "heart.fill",
+    icon: "takeoutbag.and.cup.and.straw",
     display_name: "Work lunch",
   },
 };

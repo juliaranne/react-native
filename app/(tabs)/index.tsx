@@ -101,11 +101,11 @@ export default function InputScreen() {
       </ThemedText>
       <ScrollView style={styles.scroll}>
         <View style={styles.categories}>
-          {Object.entries(Categories).map(([key, value]) => {
+          {Object.entries(Categories).map(([key, value], index) => {
             return (
               <CategoryIcon
                 text={value.display_name}
-                color={value.color}
+                color={index % 2 === 1 ? "darkcyan" : "deepskyblue"}
                 name={value.icon}
                 key={key}
                 selected={state.category}

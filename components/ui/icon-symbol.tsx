@@ -31,6 +31,13 @@ const MAPPING: IconMapping = {
   "heart.fill": "monitor-heart",
   "checkmark.circle": "check-circle",
   "chart.bar.fill": "bar-chart",
+  questionmark: "question-mark",
+  creditcard: "credit-card",
+  "cross.fill": "plus-one",
+  "arrow.trianglehead.clockwise": "arrow-circle-right",
+  "person.2.fill": "person-2",
+  tree: "nature",
+  "takeoutbag.and.cup.and.straw": "lunch-dining",
 };
 
 /**
