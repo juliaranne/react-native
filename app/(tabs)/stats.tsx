@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Svg, G, Rect, Line, Path } from "react-native-svg";
+import { Svg, G, Rect } from "react-native-svg";
 import { StyleSheet } from "react-native";
-import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as d3 from "d3";
 
@@ -31,12 +29,6 @@ const response = {
   ],
 };
 
-interface payment {
-  category: string;
-  date: string;
-  value: number;
-}
-
 const GRAPH_APSECT_RATIO = 9 / 16;
 
 export default function StatsChart() {
@@ -46,18 +38,9 @@ export default function StatsChart() {
   const min = Math.min(...response.data.map((item) => item.value));
   const max = Math.max(...response.data.map((item) => item.value));
 
+  const xDomain = response.data.map((item) => item.category);
   const yScale = d3.scaleLinear().domain([min, max]).range([height, 0]);
-  const xScale = d3
-    .scaleLinear()
-    .domain([0, response.data.length - 1])
-    .range([0, width]);
-
-  // const lineFn = d3
-  //   .line()
-  //   .x((d, ix) => xScale(ix))
-  //   .y((d, ix) => yScale(d));
-
-  // const svgLine = response.data.map((item) => lineFn(item.value));
+  const xScale = d3.scalePoint().domain(xDomain).range([0, width]);
 
   return (
     <SafeAreaView
@@ -68,12 +51,17 @@ export default function StatsChart() {
     >
       <Svg width={width} height={height}>
         <G>
-          <Path
-            d={svgLine || "undefined"}
-            stroke={"#000000"}
-            fill={"none"}
-            strokeWidth={4}
-          />
+          {response.data.map((item) => (
+            <Rect
+              key={item.category}
+              x={(xScale(item.category) ?? 0) - 5 / 2}
+              y={yScale(item.value) * -1}
+              rx={2.5}
+              width={5}
+              height={yScale(item.value)}
+              fill={"#000000"}
+            />
+          ))}
         </G>
       </Svg>
     </SafeAreaView>
