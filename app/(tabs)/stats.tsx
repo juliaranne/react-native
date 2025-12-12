@@ -30,20 +30,17 @@ const response = {
   ],
 };
 
-interface Payment {
-  category: string;
-  date: string;
-  value: number;
-}
+// interface Payment {
+//   category: string;
+//   date: string;
+//   value: number;
+// }
 
 const GRAPH_APSECT_RATIO = 9 / 16;
 
 export default function StatsChart() {
   const [width, setWidth] = useState(0);
   const height = width * GRAPH_APSECT_RATIO;
-
-  // const min = Math.min(...response.data.map((item) => item.value));
-  // const max = Math.max(...response.data.map((item) => item.value));
 
   const yDomain = response.data.map((item) => item.category);
   const yScale = d3.scaleBand().domain(yDomain).range([0, height]);
